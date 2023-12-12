@@ -183,24 +183,26 @@ input:checked + span {
   color: #eee;
   padding: 5px 15px;
   border-radius: 100px;
-  border: 2px solid #e6b7eca1;
+  border: 2px solid #ede7eda1;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .filter.active, .filter:hover {
-  background-color: #e6b7eca1;
+  background-color: rgba(221, 210, 222, 0.631);
 }
 
 .delete-all {
   display: flex;
   color: #eee;
   padding: 7px 15px;
+  border: 2px solid #ede7eda1;
+  border-radius: 100px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .delete-all:hover {
-  border-radius: 5px;
-  background-color: #e6b7eca1;
+  /* border-radius: 5px; */
+  background-color: rgba(221, 210, 222, 0.631);
 }
