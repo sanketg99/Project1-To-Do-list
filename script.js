@@ -1,3 +1,5 @@
+// DOM Elements Selection
+
 const input = document.querySelector("input");
 const addButton = document.querySelector(".add-button");
 const todosHtml = document.querySelector(".todos");
@@ -6,11 +8,15 @@ let todosJson = JSON.parse(localStorage.getItem("todos")) || [];
 const deleteAllButton = document.querySelector(".delete-all");
 const filters = document.querySelectorAll(".filter");
 let filter = '';
+
+//local storage for saving added list items
 var task=task = todosJson.filter(todo => todo.status === "pending").length;
+
+
 updateTaskCount();
 showTodos();
 
-
+// list items addition and deletion
 function getTodoHtml(todo, index) {
   if (filter && filter != todo.status) {
     return '';
@@ -27,6 +33,7 @@ function getTodoHtml(todo, index) {
   `; 
 }
 
+//if list item get added then image will not be displayed
 function showTodos() {
   if (todosJson.length == 0) {
     todosHtml.innerHTML = '';
@@ -37,6 +44,7 @@ function showTodos() {
   }
 }
 
+// to add new task and show updated list and task number
 function addTodo(todo)  {
   input.value = "";
   todosJson.unshift({ name: todo, status: "pending" });
@@ -46,6 +54,7 @@ function addTodo(todo)  {
   showTodos();
 }
 
+// to add task after pressing enter key
 input.addEventListener("keyup", e => {
   let todo = input.value.trim();
   if (!todo || e.key != "Enter") {
@@ -54,6 +63,7 @@ input.addEventListener("keyup", e => {
   addTodo(todo);
 });
 
+// to add task after clicking add button
 addButton.addEventListener("click", () => {
   
   let todo = input.value.trim();
@@ -63,6 +73,7 @@ addButton.addEventListener("click", () => {
   addTodo(todo);
 });
 
+// to make the task complete/incomplete
 function updateStatus(todo) {
   let todoName = todo.parentElement.lastElementChild;
   if (todo.checked) {
@@ -85,6 +96,7 @@ function remove(todo) {
   localStorage.setItem("todos", JSON.stringify(todosJson));
 }
 
+// filtering
 filters.forEach(function (el) {
   el.addEventListener("click", (e) => {
     if (el.classList.contains('active')) {
@@ -99,6 +111,7 @@ filters.forEach(function (el) {
   });
 });
 
+//delete all functionality
 deleteAllButton.addEventListener("click", () => {
   todosJson = [];
   localStorage.setItem("todos", JSON.stringify(todosJson));
@@ -107,6 +120,8 @@ deleteAllButton.addEventListener("click", () => {
   showTodos();
 });
 
+
+//update task count 
 function updateTaskCount() {
   const task_no = document.getElementById("task-no");
   task_no.innerHTML = `${task} task${task !== 1 ? 's' : ''} left`;
