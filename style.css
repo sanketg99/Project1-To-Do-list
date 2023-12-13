@@ -208,3 +208,8 @@ input:checked + span {
   /* border-radius: 5px; */
   background-color: rgba(221, 210, 222, 0.631);
 }
+
+#task-no{
+ 
+  color: white;
+}

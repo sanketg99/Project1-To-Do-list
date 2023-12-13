@@ -6,8 +6,10 @@ let todosJson = JSON.parse(localStorage.getItem("todos")) || [];
 const deleteAllButton = document.querySelector(".delete-all");
 const filters = document.querySelectorAll(".filter");
 let filter = '';
-
+var task=task = todosJson.filter(todo => todo.status === "pending").length;
+updateTaskCount();
 showTodos();
+
 
 function getTodoHtml(todo, index) {
   if (filter && filter != todo.status) {
@@ -39,6 +41,8 @@ function addTodo(todo)  {
   input.value = "";
   todosJson.unshift({ name: todo, status: "pending" });
   localStorage.setItem("todos", JSON.stringify(todosJson));
+  task++;
+  updateTaskCount();
   showTodos();
 }
 
@@ -51,6 +55,7 @@ input.addEventListener("keyup", e => {
 });
 
 addButton.addEventListener("click", () => {
+  
   let todo = input.value.trim();
   if (!todo) {
     return;
@@ -63,11 +68,14 @@ function updateStatus(todo) {
   if (todo.checked) {
     todoName.classList.add("checked");
     todosJson[todo.id].status = "completed";
+    task--;
   } else {
     todoName.classList.remove("checked");
     todosJson[todo.id].status = "pending";
+    task++;
   }
   localStorage.setItem("todos", JSON.stringify(todosJson));
+  updateTaskCount();
 }
 
 function remove(todo) {
@@ -94,5 +102,12 @@ filters.forEach(function (el) {
 deleteAllButton.addEventListener("click", () => {
   todosJson = [];
   localStorage.setItem("todos", JSON.stringify(todosJson));
+  task = 0;
+  updateTaskCount(); 
   showTodos();
 });
+
+function updateTaskCount() {
+  const task_no = document.getElementById("task-no");
+  task_no.innerHTML = `${task} task${task !== 1 ? 's' : ''} left`;
+}
