@@ -39,6 +39,10 @@ h1 {
   justify-content: space-between;
   margin-bottom: 25px;
   cursor: pointer;
+  border: #1e1e1f;
+  background-color: #c4c1c1;
+  border-radius: 30px;
+
 }
 
 .todo-input {
@@ -46,22 +50,22 @@ h1 {
   outline: none;
   padding: 10px 10px 10px 20px;
   background-color: transparent;
-  border: 2px solid #f4f0f5a1;
-  border-radius: 30px;
-  color: #eee;
+  border: none;
+  /* border-radius: 30px; */
+  /* color: #eee; */
   font-size: 16px;
   margin-right: 10px;
   cursor: pointer;
 }
 
 .todo-input::placeholder {
-  color: #bfbfbf;
+  color: #565454;
 }
 
 .add-button {
   border: none;
   outline: none;
-  background: #e6b7eca1;
+  background: #7a777aa1;
   color: #fff;
   font-size: 35px;
   cursor: pointer;
@@ -82,11 +86,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #463c7b;
+  background-color: #39393a;
   border-radius: 5px;
   margin: 10px 0;
   padding: 10px 12px;
-  border: 2px solid #e6b7eca1;
+  border: 2px solid rgba(240, 234, 241, 0.631) 221, 227, 0.631);
   transition: all 0.2s ease;
 }
 
@@ -99,7 +103,7 @@ h1 {
 }
 
 .todo:hover {
-  background-color:#e6b7eca1;
+  background-color:#5b575ca1;
 }
 
 .todo label {
