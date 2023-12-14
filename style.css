@@ -140,7 +140,7 @@ input:checked + span {
 }
 
 .todo:hover input:checked + span::before, input:checked + span::before {
-  background: url(./check.svg) 50% 50% no-repeat #09bb21;
+  background:  50% 50% no-repeat #09bb21;
   border-color: #09bb21;
 }
 
