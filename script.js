@@ -92,7 +92,9 @@ function updateStatus(todo) {
 function remove(todo) {
   const index = todo.dataset.index;
   todosJson.splice(index, 1);
+  task--;
   showTodos();
+  updateTaskCount();
   localStorage.setItem("todos", JSON.stringify(todosJson));
 }
 
